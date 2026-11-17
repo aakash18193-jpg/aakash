@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakash - Portfolio</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-purple: #4a0080;
+            --light-purple: #8e44ad;
+            --accent-gold: #f1c40f;
+            --bg-light: #f9f9fb;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        header {
+            background: var(--white);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-purple);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, #9b59b6 0%, #4a0080 100%);
+            color: var(--white);
+            padding: 80px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 span {
+            color: var(--accent-gold);
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-purple);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold);
+            color: var(--text-dark);
+        }
+
+        .btn-outline {
+            border: 1.5px solid rgba(255,255,255,0.7);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-purple);
+        }
+
+        .hero-img-container {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+        }
+
+        /* --- Section Common Styling --- */
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .section-underline {
+            width: 50px;
+            height: 3px;
+            background: var(--primary-purple);
+            margin: 0 auto 45px;
+            border-radius: 2px;
+        }
+
+        /* --- About Me --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .stat-box {
+            background: var(--primary-purple);
+            color: var(--white);
+            padding: 25px 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(74, 0, 128, 0.2);
+        }
+
+        .stat-box h3 {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-box p {
+            font-size: 0.75rem;
+            opacity: 0.9;
+        }
+
+        /* --- Skills & Technologies --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .skill-icon {
+            background: #2c3e50;
+            color: var(--white);
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .skill-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+
+        .skill-card span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary-purple);
+            width: 85%;
+        }
+
+        /* --- Experience Timeline --- */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--light-purple);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            right: -7px;
+            background-color: var(--white);
+            border: 3px solid var(--primary-purple);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -7px; }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .timeline-content small {
+            color: var(--light-purple);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Services Offered --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h4 {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        .service-card p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Latest From Blog --- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        .blog-banner {
+            background: var(--primary-purple);
+            height: 130px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .blog-body {
+            padding: 20px;
+        }
+
+        .blog-body h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .blog-body p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .blog-body a {
+            font-size: 0.8rem;
+            color: var(--primary-purple);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* --- Get In Touch --- */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form label {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .contact-form button {
+            background: var(--white);
+            color: var(--primary-purple);
+            border: 1px solid #ddd;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: var(--primary-purple);
+            color: var(--white);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .info-icon {
+            background: var(--primary-purple);
+            color: var(--white);
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-card h5 {
+            font-size: 0.9rem;
+        }
+
+        .info-card p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            background: var(--primary-purple);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary-purple);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .about-content, .contact-container { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid, .blog-grid { grid-template-columns: 1fr; }
+            .timeline::after { left: 20px; }
+            .timeline-item { width: 100%; padding-left: 50px; padding-right: 15px; }
+            .timeline-item::after { left: 13px; }
+            .right { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <a href="#" class="logo">Aakash</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Hi, I'm <span>Aakash</span></h1>
+            <p>Full Stack Developer | Web Developer | Tech Enthusiast</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-primary">Hire Me</a>
+                <a href="#services" class="btn btn-outline">My Services</a>
+            </div>
+        </div>
+        <div class="hero-img-container">
+            <!-- Unga photo filename 'profile.jpg' nu irukkanum -->
+            <img src="profile.jpg" alt="Aakash">
+        </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="section-underline"></div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Hello! I'm Aakash, a passionate Full Stack Developer focused on building responsive, user-friendly, and modern web applications. I enjoy turning complex problems into simple, clean, and efficient digital solutions.</p>
+                <p>With hands-on experience in both front-end and back-end technologies, I love crafting seamless user interfaces and scalable server architectures that bring ideas to life on the web.</p>
+                <p>Always eager to learn new frameworks and tools, I strive to deliver high-quality code and impactful digital experiences for clients and users alike.</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>5+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-box">
+                    <h3>10+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-box">
+                    <h3>8+</h3>
+                    <p>Satisfied Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Technologies -->
+    <section id="skills">
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="section-underline"></div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">HTML</div>
+                <h4>HTML5</h4>
+                <span>Advanced Level</span>
+                <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">CSS</div>
+                <h4>CSS3</h4>
+                <span>Advanced Level</span>
+                <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">JS</div>
+                <h4>JavaScript</h4>
+                <span>Advanced Level</span>
+                <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">PHP</div>
+                <h4>PHP / Laravel</h4>
+                <span>Advanced Level</span>
+                <div class="progress-bar"><div class="progress" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">REACT</div>
+                <h4>React JS</h4>
+                <span>Intermediate Level</span>
+                <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">SQL</div>
+                <h4>MySQL</h4>
+                <span>Advanced Level</span>
+                <div class="progress-bar"><div class="progress" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">GIT</div>
+                <h4>Git & GitHub</h4>
+                <span>Advanced Level</span>
+                <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">UI/UX</div>
+                <h4>Responsive Design</h4>
+                <span>Advanced Level</span>
+                <div class="progress-bar"><div class="progress" style="width: 92%;"></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience">
+        <h2 class="section-title">Experience Timeline</h2>
+        <div class="section-underline"></div>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h4>Senior Web Developer</h4>
+                    <small>2023 - Present</small>
+                    <p>Leading full-stack web development projects, designing scalable databases, and building modern user interfaces.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h4>Full Stack Developer</h4>
+                    <small>2021 - 2023</small>
+                    <p>Developed dynamic web applications, REST APIs, and responsive client websites using modern web stacks.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h4>Junior Front-End Developer</h4>
+                    <small>2020 - 2021</small>
+                    <p>Created clean HTML, CSS, and JavaScript layouts while optimizing website performance across devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Offered -->
+    <section id="services">
+        <h2 class="section-title">Services Offered</h2>
+        <div class="section-underline"></div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="skill-icon">WEB</div>
+                <h4>Web Development</h4>
+                <p>Building responsive and modern websites using HTML, CSS, and JavaScript.</p>
+            </div>
+            <div class="service-card">
+                <div class="skill-icon">APP</div>
+                <h4>Full Stack Apps</h4>
+                <p>End-to-end web application development with secure backend and database integration.</p>
+            </div>
+            <div class="service-card">
+                <div class="skill-icon">UI</div>
+                <h4>UI/UX Design</h4>
+                <p>Designing clean, intuitive, and user-centered web interfaces for better engagement.</p>
+            </div>
+            <div class="service-card">
+                <div class="skill-icon">API</div>
+                <h4>API Integration</h4>
+                <p>Connecting third-party services and building custom RESTful APIs.</p>
+            </div>
+            <div class="service-card">
+                <div class="skill-icon">SEO</div>
+                <h4>Performance & SEO</h4>
+                <p>Optimizing page load speeds and search engine visibility for better reach.</p>
+            </div>
+            <div class="service-card">
+                <div class="skill-icon">FIX</div>
+                <h4>Website Maintenance</h4>
+                <p>Ongoing support, bug fixing, and feature updates to keep sites running smoothly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest From Blog -->
+    <section id="blog">
+        <h2 class="section-title">Latest From Blog</h2>
+        <div class="section-underline"></div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-banner">
+                    <div class="skill-icon" style="background: #fff; color: #4a0080;">CODE</div>
+                </div>
+                <div class="blog-body">
+                    <h4>Modern Web Best Practices</h4>
+                    <p>Key tips for writing clean, maintainable, and fast front-end code in 2026.</p>
+                    <a href="#">Read More &rarr;</a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-banner">
+                    <div class="skill-icon" style="background: #fff; color: #4a0080;">CSS</div>
+                </div>
+                <div class="blog-body">
+                    <h4>Mastering CSS Grid & Flexbox</h4>
+                    <p>How to build complex responsive layouts effortlessly with modern CSS.</p>
+                    <a href="#">Read More &rarr;</a>
+                </div>
+            </div>
+            <div class="blog-card">
+                <div class="blog-banner">
+                    <div class="skill-icon" style="background: #fff; color: #4a0080;">JS</div>
+                </div>
+                <div class="blog-body">
+                    <h4>JavaScript Performance Tips</h4>
+                    <p>Simple techniques to make your web apps feel smoother and faster.</p>
+                    <a href="#">Read More &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get In Touch -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-underline"></div>
+        <div class="contact-container">
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent to Aakash!');">
+                <div>
+                    <label>Name</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div>
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="Write your message here..." required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div>
+                        <h5>Email</h5>
+                        <p>aakash@example.com</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div>
+                        <h5>Phone</h5>
+                        <p>+94 77 123 4567</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <h5>Location</h5>
+                        <p>Sri Lanka</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Aakash. All rights reserved.</p>
+        <p style="opacity: 0.8; font-size: 0.72rem; margin-top: 3px;">Designed by Aakash</p>
+    </footer>
+
+</body>
+</html>
